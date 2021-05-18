@@ -25,17 +25,17 @@ function App() {
     },
   ];
 
-  const [currentExpenses, updateExpense] = useState([]);
+  const [currentExpenses, updateExpense] = useState(expenses);
 
   const addExpenseHandler = (expense)=>{
     updateExpense((previousExpense)=>{
-      return {...previousExpense, expense};
+      return [...previousExpense, expense];
     })
   }
     return (
     <div className="App">
       <NewExpense onAddExpense={addExpenseHandler}/>
-      <Expenses expenses = {expenses}/>
+      <Expenses expenses = {currentExpenses}/>
     </div>
   );
 }
