@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
@@ -23,9 +24,17 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  const [currentExpenses, updateExpense] = useState([]);
+
+  const addExpenseHandler = (expense)=>{
+    updateExpense((previousExpense)=>{
+      return {...previousExpense, expense};
+    })
+  }
     return (
     <div className="App">
-      <NewExpense/>
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses expenses = {expenses}/>
     </div>
   );

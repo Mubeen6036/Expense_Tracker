@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import classes from './ExpenseForm.module.css'
-const ExpenseForm = () =>{
+const ExpenseForm = (props) =>{
     const [currentTitle, updateTitle]=useState('');
     const [currentAmount, updateAmount]=useState('');
     const [currentDate, updateDate]=useState('');
@@ -23,6 +23,7 @@ const ExpenseForm = () =>{
         updateTitle('');
         updateDate('');
         updateAmount('');
+        props.onSaveData(expenseData);
     }
     return (
     <form>
